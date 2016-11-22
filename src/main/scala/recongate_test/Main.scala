@@ -7,14 +7,9 @@ import scala.util.{Failure, Success, Try}
 /**
   * Reverses a huge file, writing the result to target + returns the top reversed words of the file.
   *
-  * @param topWordsNum number of top words to return
-  * @param source      source file - can be bigger than memory
-  * @param target      target file to write reversed file to
-  * @param sliceSize   the size of slices to read file by
-  *
-  *                    =__Assumptions:__=
+  * =__Assumptions:__=
   *                    - Assuming the hashmap of distinct words in the file can fit in memory (otherwise counting top
-  *                    words would need constant reading/writing to additional file).<br>
+  * words would need constant reading/writing to additional file).<br>
   *                    - Assuming file's size is less than 2^63^ bytes, as this is the max value of Long.<br>
   *                    - Assuming the sliceSize is bigger than any word in the file (otherwise word cutting may occur)<br>
   *                    - Assuming the file is encoded in UTF-8
@@ -39,7 +34,7 @@ object Main {
     * @param args 1. file name to reverse, 2. target file name
     */
   def main(args: Array[String]): Unit = {
-    if (args.length < 2)  {
+    if (args.length < 2) {
       logger.error(s"Wrong number of parameters for the program. Got ${args.length}, expected 2.")
       throw new RuntimeException("Add parameters to the call:\n\t1. File to reverse,\t2. Target file name\n")
     }
